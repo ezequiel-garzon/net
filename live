@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>LIVE!</title>
+<style>
+body { display: flex; gap: 1em; margin: 0; height: 100vh; }
+textarea { width: 50%; font-family: monospace; resize: none; }
+iframe { flex: 1; border: none; }
+</style>
+</head>
+<body>
+<textarea spellcheck=false id=src>
+</textarea>
+<iframe id=out></iframe>
+<script>
+const src = document.getElementById('src');
+const out = document.getElementById('out');
+function run() {
+  const blob = new Blob([src.value], {type:'text/html'});
+  out.src = URL.createObjectURL(blob);
+}
+src.addEventListener('input', run);
+run();
+</script>
